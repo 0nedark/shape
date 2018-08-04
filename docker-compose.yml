@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  shape:
+    build: ./
+    container_name: shape
+    volumes:
+      - ./:/go/src/github.com/0nedark/shape
