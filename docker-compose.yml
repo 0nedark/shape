@@ -6,3 +6,4 @@ services:
     container_name: shape
     volumes:
       - ./:/go/src/github.com/0nedark/shape
+    command: sh -c "while [ true ]; do sleep 1d; done"

@@ -4,6 +4,9 @@ build:
 	docker-compose up -d
 	docker exec -it shape dep ensure
 
+ensure:
+	docker exec -it shape dep ensure
+
 restart:
 	docker-compose restart
 	
