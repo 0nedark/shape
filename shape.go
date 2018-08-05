@@ -12,7 +12,7 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "shape"
 	app.Usage = "modify config files with one command line tool."
-	app.Version = "1.0.0"
+	app.Version = "1.1.0"
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
 			Name:  "file, f",
