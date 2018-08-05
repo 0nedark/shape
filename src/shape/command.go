@@ -47,6 +47,12 @@ func load() error {
 }
 
 func parseValue(value string) interface{} {
+	if value == "true" {
+		return true
+	} else if value == "false" {
+		return false
+	}
+
 	number, err := strconv.Atoi(value)
 	if err != nil {
 		return value
