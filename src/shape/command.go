@@ -10,16 +10,16 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-type file = map[string]interface{}
+type keyValuePair = map[string]interface{}
 
-var input file
-var path string
+var input keyValuePair
+var file string
 var mutable bool
 
 // Action defines the shape command
 func Action(c *cli.Context) error {
-	input = file{}
-	path = c.String("path")
+	input = keyValuePair{}
+	file = c.String("file")
 	mutable = c.Bool("mutable")
 	if err := load(); err != nil {
 		return err
@@ -33,7 +33,7 @@ func Action(c *cli.Context) error {
 }
 
 func load() error {
-	raw, err := ioutil.ReadFile(path)
+	raw, err := ioutil.ReadFile(file)
 	if err != nil {
 		return err
 	}
@@ -73,7 +73,7 @@ func save() error {
 		return err
 	}
 
-	if err = ioutil.WriteFile(path, raw, 0); err != nil {
+	if err = ioutil.WriteFile(file, raw, 0); err != nil {
 		return err
 	}
 
