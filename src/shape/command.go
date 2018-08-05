@@ -16,6 +16,7 @@ var input file
 var path string
 var mutable bool
 
+// Action defines the shape command
 func Action(c *cli.Context) error {
 	input = file{}
 	path = c.String("path")
@@ -67,7 +68,15 @@ func update(args cli.Args) error {
 }
 
 func save() error {
-	log.WithField("File", input).Info("File updated")
+	raw, err := json.Marshal(input)
+	if err != nil {
+		return err
+	}
 
+	if err = ioutil.WriteFile(path, raw, 0); err != nil {
+		return err
+	}
+
+	log.WithField("File", input).Info("File updated")
 	return nil
 }
