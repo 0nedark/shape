@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"regexp"
+	"strconv"
 
 	"github.com/urfave/cli"
 
@@ -45,12 +46,21 @@ func load() error {
 	return nil
 }
 
+func parseValue(value string) interface{} {
+	number, err := strconv.Atoi(value)
+	if err != nil {
+		return value
+	}
+
+	return number
+}
+
 func update(args cli.Args) error {
 	r := regexp.MustCompile("(?P<key>.+)=(?P<value>[[:alnum:]]+)")
 	for _, arg := range args {
 		if matches := r.FindStringSubmatch(arg); len(matches) > 0 {
 			key := matches[1]
-			value := matches[2]
+			value := parseValue(matches[2])
 			if _, ok := input[key]; ok || mutable {
 				input[key] = value
 			} else {
