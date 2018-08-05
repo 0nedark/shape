@@ -14,7 +14,7 @@ func main() {
 	app.Usage = "modify config files with one command line tool."
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
-			Name:  "path, p",
+			Name:  "file, f",
 			Usage: "file to be shaped",
 		},
 		cli.BoolFlag{
