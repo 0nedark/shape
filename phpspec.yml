@@ -1,0 +1,4 @@
+suites:
+  unit:
+    namespace: MVF\SystemLogger
+    psr4_prefix: MVF\SystemLogger
