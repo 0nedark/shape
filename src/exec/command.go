@@ -26,6 +26,10 @@ func init() {
 				Name:  "shape, s",
 				Usage: "Specifies the shape file",
 			},
+			cli.StringFlag{
+				Name:  "regexp, r",
+				Usage: "Regular expression used to capture the output of the command. All named groups will be stored in the captures.json file",
+			},
 		},
 	}
 }
